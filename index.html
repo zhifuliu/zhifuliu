@@ -9,14 +9,76 @@
     </head>
     <body>
         <!-- header -->
-        <div class="header min-h-50">
-            <div class="nickname f-20">不想睡的小屌丝</div>
+        <div class="header">
+            <div class="nickname f-26" data-bind="text: personalMsg().nickname"></div>
         </div>
 
-        <div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>
+        <!-- content: 包含两部分信息，左右布局，左边是内容，右边是我的信息 -->
+        <div class="content">
+            <div class="left"></div>
+            <div class="right">
+                <div class="userMsg">
+                    <div class="head head-img"></div>
+                    <div class="nickname">不想睡的小屌丝</div>
+                    <div class="motto">睡不着先生，睡不醒小姐，不想睡的小屌丝</div>
+                    <div class="personal-tags">
+                        <li class="tag-item">标签1</li>
+                        <li class="tag-item">标签2</li>
+                        <li class="tag-item">标签3</li>
+                        <li class="tag-item">标签4</li>
+                        <li class="tag-item">标签5</li>
+                        <li class="tag-item">标签6</li>
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <div class="tag-name">分类1</div>
+                    <div class="tag-name">分类2</div>
+                    <div class="tag-name">分类3</div>
+                    <div class="tag-name">分类4</div>
+                    <div class="tag-name">分类5</div>
+                    <div class="tag-name">分类6</div>
+                    <div class="tag-name">分类7</div>
+                    <div class="tag-name">分类8</div>
+                    <div class="tag-name">分类9</div>
+                    <div class="tag-name">分类0</div>
+                    <div class="tag-name">分类11</div>
+                    <div class="tag-name">分类12</div>
+                    <div class="tag-name">分类13</div>
+                </div>
+            </div>
+        </div>
+        <!--<div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>-->
 
         <!-- footer -->
-        <br>
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="copyright">
+                <table>
+                    <tr>
+                        <td style="color: #aaaaaa">
+                            <div class="msg"><!-- ko text: personalMsg().name --><!-- /ko --> © 2016</div>
+                            <div class="msg">github gitlab twitter google</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">email:</div>
+                            <div class="msg" data-bind="text: personalMsg().email"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">QQ:</div>
+                            <div class="msg" data-bind="text: personalMsg().qq"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">phone:</div>
+                            <div class="msg" data-bind="text: personalMsg().phone"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
