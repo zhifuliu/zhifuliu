@@ -15,7 +15,63 @@
 
         <!-- content: 包含两部分信息，左右布局，左边是内容，右边是我的信息 -->
         <div class="content">
-            <div class="left"></div>
+            <!-- 三种信息：标签博客列表、博客列表（包括搜索结果）、博客详情 -->
+            <div class="left">
+                <div class="search"></div>
+                <div class="tags pd-tb10-lr5">
+                    <div class="tag-item">标签</div>
+                    <div class="tag-item">标签</div>
+                    <div class="tag-item">标签</div>
+                    <div class="tag-item">标签</div>
+                    <div class="tag-item">标签</div>
+                    <div class="tag-item">标签</div>
+                </div>
+                <!-- 标签博客列表 -->
+                <div data-bind="visible: showModule() == 'tagList'">
+                    <div class="tag-blog-list">
+                        <div class="tag-name">标签名</div>
+                        <div class="blog">
+                            <div class="title">文章标题</div>
+                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
+                            <div class="tags pd-tb3-lr3">
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tag-blog-list">
+                        <div class="tag-name">标签名</div>
+                        <div class="blog">
+                            <div class="title">文章标题</div>
+                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
+                            <div class="tags pd-tb3-lr3">
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tag-blog-list">
+                        <div class="tag-name">标签名</div>
+                        <div class="blog">
+                            <div class="title">文章标题</div>
+                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
+                            <div class="tags pd-tb3-lr3">
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                                <div class="tag-item">标签</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 博客列表: 和标签博客列表差不多 -->
+
+                <!-- 博客详情 -->
+                <div data-bind="visible: showModule() == 'post', html: post()"></div>
+
+            </div>
             <div class="right">
                 <div class="userMsg">
                     <div class="head head-img"></div>

@@ -1,0 +1,68 @@
+/* 博客文章的所有样式都在这里面，需要分析所有的基本元素：
+   标题，副标题，摘要，小标题，段落
+   图片，链接*/
+.post {
+    width: 96%;
+    margin: auto;
+    background-color: white;
+    min-height: 200px;
+    position: relative;
+    padding:20px 0;
+}
+.post .headline {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+}
+.post .subhead {
+    width: 100%;
+    text-align: center;
+}
+.post .post-msg {
+    width: 100%;
+    padding: 5px 5%;
+    display: inline-block;
+    border-bottom: 1px solid #e8e8e8;
+}
+.post .post-msg .time {
+    float: right;
+}
+.post .post-msg .tags {
+    float: left;
+    width: auto;
+}
+.post .section {
+    width: 96%;
+    margin: auto;
+}
+.post .section .subtitle {
+    width: 100%;
+    padding: 10px 0;
+}
+.post .section .content-block {
+    text-indent: 2em;
+}
+/* 代码块 */
+.post .section .code-block {
+    border: 1px solid red;
+}
+/* 分页 */
+.post .section .pages {
+
+}
+/* 文字样式：高亮、模糊、大小、倾斜、下划线等*/
+.f-headline {font-size: 30px}
+.f-subhead {font-size: 15px}
+.f-subtitle {font-size: 20px}
+.height-light {color: black;}
+.line-h-1-5 {line-height: 1.5}
+.low-light {color: #aaaaaa}
+
+.post img {
+    max-width: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.post a {}
