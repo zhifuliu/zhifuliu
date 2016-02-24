@@ -7,63 +7,52 @@
         <link rel="stylesheet" href="css.css">
         <script src="scripts.js"></script>
     </head>
-    <body>
+    <!--  data-bind="event: {keypress: formKeyPress}" -->
+    <body data-bind="event: {keydown: formKeyPress}">
         <!-- header -->
         <div class="header">
-            <div class="nickname f-26" data-bind="text: personalMsg().nickname"></div>
+            <li class="nickname f-26" data-bind="text: personalMsg().nickname"></li>
+            <div class="search">
+                <input class="item" type="text" data-bind="textInput: searchStr">
+                <button class="item" data-bind="click: searchPost.bind($data, searchStr(), 1)">搜索</button>
+            </div>
         </div>
 
         <!-- content: 包含两部分信息，左右布局，左边是内容，右边是我的信息 -->
         <div class="content">
             <!-- 三种信息：标签博客列表、博客列表（包括搜索结果）、博客详情 -->
             <div class="left">
-                <div class="search"></div>
-                <div class="tags pd-tb10-lr5">
-                    <div class="tag-item">标签</div>
-                    <div class="tag-item">标签</div>
-                    <div class="tag-item">标签</div>
-                    <div class="tag-item">标签</div>
-                    <div class="tag-item">标签</div>
-                    <div class="tag-item">标签</div>
+                <div class="search" data-bind="visible: '' == 'false'"></div>
+                <div class="tags pd-tb10-lr5" data-bind="visible: '' == 'false'">
+                    <li class="tag-item">标签</li>
                 </div>
                 <!-- 标签博客列表 -->
                 <div data-bind="visible: showModule() == 'tagList'">
+                    <!-- ko foreach: posts() -->
                     <div class="tag-blog-list">
-                        <div class="tag-name">标签名</div>
-                        <div class="blog">
-                            <div class="title">文章标题</div>
-                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
-                            <div class="tags pd-tb3-lr3">
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
+                        <li class="tag-name" data-bind="text: category"></li>
+                        <div data-bind="visible: list.length > 0">
+                            <!-- ko foreach: list -->
+                            <div class="blog" data-bind="click: function(){$parents[1].currentPost($data)}">
+                                <li class="title" data-bind="text: headline"></li>
+                                <div class="msg low-light">
+                                    <li class="tag" data-bind="text: category"></li>
+                                    <li class="time" data-bind="text: time"></li>
+                                </div>
+                                <div class="abstract f-abstract low-light" data-bind="text: abstract"></div>
+                                <div class="tags pd-tb3-lr3">
+                                    <!-- ko foreach: tags -->
+                                    <li class="tag-item" data-bind="text: $data"></li>
+                                    <!-- /ko -->
+                                </div>
                             </div>
+                            <!-- /ko -->
+                        </div>
+                        <div data-bind="visible: list.length == 0">
+                            未找到结果
                         </div>
                     </div>
-                    <div class="tag-blog-list">
-                        <div class="tag-name">标签名</div>
-                        <div class="blog">
-                            <div class="title">文章标题</div>
-                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
-                            <div class="tags pd-tb3-lr3">
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tag-blog-list">
-                        <div class="tag-name">标签名</div>
-                        <div class="blog">
-                            <div class="title">文章标题</div>
-                            <div class="abstract f-abstract">摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要</div>
-                            <div class="tags pd-tb3-lr3">
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
-                                <div class="tag-item">标签</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- /ko -->
                 </div>
 
                 <!-- 博客列表: 和标签博客列表差不多 -->
@@ -74,36 +63,22 @@
             </div>
             <div class="right">
                 <div class="userMsg">
-                    <div class="head head-img"></div>
-                    <div class="nickname">不想睡的小屌丝</div>
-                    <div class="motto">睡不着先生，睡不醒小姐，不想睡的小屌丝</div>
-                    <div class="personal-tags">
-                        <li class="tag-item">标签1</li>
-                        <li class="tag-item">标签2</li>
-                        <li class="tag-item">标签3</li>
-                        <li class="tag-item">标签4</li>
-                        <li class="tag-item">标签5</li>
-                        <li class="tag-item">标签6</li>
+                    <div class="head head-img" data-bind="click: clickHasher"></div>
+                    <div class="nickname" data-bind="text: personalMsg().nickname"></div>
+                    <div class="motto" data-bind="text: personalMsg().motto"></div>
+                    <div class="tags pd-tb10-lr5">
+                        <!-- ko foreach: personalTag() -->
+                        <li class="tag-item" data-bind="text: $data"></li>
+                        <!-- /ko -->
                     </div>
                 </div>
                 <div class="post-tags">
-                    <div class="tag-name">分类1</div>
-                    <div class="tag-name">分类2</div>
-                    <div class="tag-name">分类3</div>
-                    <div class="tag-name">分类4</div>
-                    <div class="tag-name">分类5</div>
-                    <div class="tag-name">分类6</div>
-                    <div class="tag-name">分类7</div>
-                    <div class="tag-name">分类8</div>
-                    <div class="tag-name">分类9</div>
-                    <div class="tag-name">分类0</div>
-                    <div class="tag-name">分类11</div>
-                    <div class="tag-name">分类12</div>
-                    <div class="tag-name">分类13</div>
+                    <!-- ko foreach: blogTags() -->
+                    <li class="tag-name" data-bind="text: tagName + '&ensp;(' + postNum + ')', click: function(){$parent.activeTag(tagName)}, css: {active: $parent.activeTag() == tagName}"></li>
+                    <!-- /ko -->
                 </div>
             </div>
         </div>
-        <!--<div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>-->
 
         <!-- footer -->
         <div class="footer">
