@@ -1,0 +1,133 @@
+<div class="post">
+    <div class="headline f-headline">本博客系统使用说明</div>
+    <div class="subhead f-subhead low-light">对本博客系统的使用说明，讲述怎么安装，怎么写第一篇博客</div>
+    <div class="post-msg">
+        <div class="time">2016-03-04 20:17:39</div>
+        <div class="tags">
+            <div class="tag-item">博客系统</div>
+            <div class="tag-item">前端</div>
+            <div class="tag-item">gulp</div>
+            <div class="tag-item">github-pages</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="subtitle f-subtitle height-light">1 原理</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                github 为每一个工程提供了一个介绍页面，只是提供静态的站点，并没有数据库和后台，基于一个个人博客的内容并不多，
+                可以考虑将博客内容存在json 或者 js的json对象中，来实现一个简单的博客系统。市面上已经有一个很成熟的博客框架:jekyll，
+                但作为一个前端工程师，我还是希望能够写自己的一个博客框架，托管在 github pages 上。
+            </p>
+            <p>
+                本博客系统只提供了简单的搜索功能，搜索是基于博客的标题、分类、摘要来搜索的。
+            </p>
+        </div>
+        <div class="subtitle f-subtitle height-light">2 使用的技术和需要安装的环境</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                本博客系统使用的框架：knockout + typescript,所以需要安装 nodejs 才能使用本框架。
+                使用的前端自动化构建工具是 gulp,常用的 task 都已经写好，如果有自己的需求，可以添加或者修改 task 来实现自己的功能
+            </p>
+            <div class="code-block">
+                安装nodejs：上逛网下载相应的安装文件
+            </div>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">3 初始化工程</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                将本工程clone到你自己的工程下面,以后会考虑支持 yeoman，直接通过 yeoman 来生成项目。
+            </p>
+            <p>
+                拉取完工程后，需要安装一些基本的库:gulp、typescript、bower。安装完这些库后，就需要安装工程依赖。
+            </p>
+            <div class="code-block">
+                <p>安装基本的库：npm install gulp typescript bower --verbose</p>
+                <p>安装依赖：npm install --verbose 和 bower install --verbose</p>
+            </div>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">4 gulp task 讲解</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                常用的 gulp task：default、post、web-server、auto-ts。各个 task 的作用：
+            </p>
+            <p>
+                default：编译，将所用的有用文件编译到根目录的 dist 目录下。这个目录的作用就是临时存放这些编译结果，可以考虑编译的时候，将编译结果直接放入 github pages 目录下，目前需要自己手动拷贝至 github 项目的 gh-pages 分支下，然后push到github,就能看见效果
+            </p>
+            <p>
+                post: 自动化创建一片文章，详细介绍见 第五步
+            </p>
+            <p>
+                web-server：和 auto-ts 配合使用。在用本框架写文章或二次开发的时候，运行这两个 task ，会监视 ts 等文件，自动刷新，并提供服务器
+            </p>
+            <div class="code-block">
+                gulp task 使用方法：gulp taskName-1 [2, 3]
+            </div>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">5 新建博客</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                新建博客使用 gulp post，不过在这之前需要填写根目录下的 newblog.json，post 任务会读取这个文件然后文成一些基本的操作，具体的操作：
+            </p>
+            <p>
+                1 在 src/app/posts.ts 和 src/app/posts.json 文件下追加新文章信息，因为这两个文件就相当于本框架的数据库
+            </p>
+            <p>
+                2 根据新博客文章的分类和 url 来创建目录或者文件夹，并在文件夹下创建相应的 html文件
+            </p>
+            <p>
+                3 在 startup.ts 文件中，追加新建博客文章html的引入。因为本框架引入博客文章html是通过require进来的，直接将require的结果放入 post div 下
+            </p>
+            <p>
+                注意，src/app/posts.ts 和 src/app/posts.json 这两个文件第一次运行的时候是空的，如果这个时候运行 gulp web-server，那么将出错。首次通过 gulp post 创建博客文章，post 任务会自动判断是否为空，并采取相应的追加信息到文件的措施。
+                创建了博客之后，就可以运行  gulp web-server ，然后打开 http://127.0.0.1:1314/index.html 就可以看见了。
+            </p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">6 博客文章的书写</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                新建博客文章后，就可以开始写博客了，找到新建博客文章的 html 文件，如何编辑，post.css 为大家提供了一些文章基本格式的样式（标题、副标题、标签、创建时间、段落标题、段落、图片、代码块），你可以根据自己的要求写样式
+            </p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">7 写完博客文章后的操作</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                写完文章后，需要发布。发布过程：
+            </p>
+            <p>
+                1 运行gulp编译任务:gulp
+            </p>
+            <p>
+                2 将编译后的结果放入github博客托管工程内。这一步可考虑放入 gulp 编译任务中
+            </p>
+            <p>
+                3 发布，将编译后的结果工程push 到github上，注意是gh-pages 分支
+            </p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">8 个人设置</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                本框架，将个人和博客设置信息分开。个人信息：src/app/personal.js 里面；博客标签信息：src/app/blogconfig.ts 里面
+            </p>
+            <p>
+                个人信息：1 名字；2 头像； 3 个人标签； 4 昵称；5 email；6 github和gitlab地址；7 qq；8 手机号；9 座右铭列表(程序会25秒随机换一个)
+            </p>
+            <p>
+                博客标签信息：就一个标签列表，在框架运行时，自己会统计各个标签下博客文章的数量，并在首页展示
+            </p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">9 感想</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                还有很多地方可以优化，很多样式可以提供，以后有时间慢慢改善
+            </p>
+        </div>
+    </div>
+</div>

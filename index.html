@@ -3,20 +3,113 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>yo-ko-test</title>
+        <title></title>
         <link rel="stylesheet" href="css.css">
         <script src="scripts.js"></script>
     </head>
-    <body>
+    <!--  data-bind="event: {keypress: formKeyPress}" -->
+    <body data-bind="event: {keydown: formKeyPress}">
         <!-- header -->
-        <div class="header min-h-50">
-            <div class="nickname f-20">不想睡的小屌丝</div>
+        <div class="header">
+            <li class="nickname f-26" data-bind="text: personalMsg().nickname"></li>
+            <div class="search">
+                <input class="item" type="text" data-bind="textInput: searchStr, event: {keydown: search}">
+                <button class="item" data-bind="click: startSearch">搜索</button>
+            </div>
         </div>
 
-        <div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>
+        <!-- content: 包含两部分信息，左右布局，左边是内容，右边是我的信息 -->
+        <div class="content">
+            <!-- 三种信息：标签博客列表、博客列表（包括搜索结果）、博客详情 -->
+            <div class="left">
+                <div class="search" data-bind="visible: '' == 'false'"></div>
+                <div class="tags pd-tb10-lr5" data-bind="visible: '' == 'false'">
+                    <li class="tag-item">标签</li>
+                </div>
+                <!-- 标签博客列表 -->
+                <div data-bind="visible: showModule() == 'tagList'">
+                    <!-- ko foreach: posts() -->
+                    <div class="tag-blog-list">
+                        <li class="tag-name" data-bind="text: category"></li>
+                        <div data-bind="visible: list.length > 0">
+                            <!-- ko foreach: list -->
+                            <div class="blog" data-bind="click: function(){$parents[1].currentPost($data)}">
+                                <li class="title" data-bind="text: headline"></li>
+                                <div class="msg low-light">
+                                    <li class="tag" data-bind="text: category"></li>
+                                    <li class="time" data-bind="text: time"></li>
+                                </div>
+                                <div class="abstract f-abstract low-light" data-bind="text: abstract"></div>
+                                <div class="tags pd-tb3-lr3">
+                                    <!-- ko foreach: tags -->
+                                    <li class="tag-item" data-bind="text: $data"></li>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                        <div data-bind="visible: list.length == 0">
+                            未找到结果
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- 博客列表: 和标签博客列表差不多 -->
+
+                <!-- 博客详情 -->
+                <div data-bind="visible: showModule() == 'post', html: post()"></div>
+
+            </div>
+            <div class="right">
+                <div class="userMsg">
+                    <div class="head head-img" data-bind="click: clickHasher"></div>
+                    <div class="nickname" data-bind="text: personalMsg().nickname"></div>
+                    <div class="motto" data-bind="text: motto"></div>
+                    <div class="tags pd-tb10-lr5">
+                        <!-- ko foreach: personalTag() -->
+                        <li class="tag-item mr-b-5" data-bind="text: $data"></li>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="post-tags">
+                    <!-- ko foreach: blogTags() -->
+                    <li class="tag-name" data-bind="text: tagName + '&ensp;(' + postNum + ')', click: function(){$parent.activeTag(tagName)}, css: {active: $parent.activeTag() == tagName}"></li>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
 
         <!-- footer -->
-        <br>
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="copyright">
+                <table>
+                    <tr>
+                        <td style="color: #aaaaaa">
+                            <div class="msg"><!-- ko text: personalMsg().name --><!-- /ko --> © 2016</div>
+                            <div class="msg">github gitlab twitter google</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">email:</div>
+                            <div class="msg" data-bind="text: personalMsg().email"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">QQ:</div>
+                            <div class="msg" data-bind="text: personalMsg().qq"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="msg">phone:</div>
+                            <div class="msg" data-bind="text: personalMsg().phone"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
