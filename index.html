@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>yo-ko-test</title>
+        <title></title>
         <link rel="stylesheet" href="css.css">
         <script src="scripts.js"></script>
     </head>
@@ -13,8 +13,8 @@
         <div class="header">
             <li class="nickname f-26" data-bind="text: personalMsg().nickname"></li>
             <div class="search">
-                <input class="item" type="text" data-bind="textInput: searchStr">
-                <button class="item" data-bind="click: searchPost.bind($data, searchStr(), 1)">搜索</button>
+                <input class="item" type="text" data-bind="textInput: searchStr, event: {keydown: search}">
+                <button class="item" data-bind="click: startSearch">搜索</button>
             </div>
         </div>
 
@@ -65,10 +65,10 @@
                 <div class="userMsg">
                     <div class="head head-img" data-bind="click: clickHasher"></div>
                     <div class="nickname" data-bind="text: personalMsg().nickname"></div>
-                    <div class="motto" data-bind="text: personalMsg().motto"></div>
+                    <div class="motto" data-bind="text: motto"></div>
                     <div class="tags pd-tb10-lr5">
                         <!-- ko foreach: personalTag() -->
-                        <li class="tag-item" data-bind="text: $data"></li>
+                        <li class="tag-item mr-b-5" data-bind="text: $data"></li>
                         <!-- /ko -->
                     </div>
                 </div>
