@@ -176,6 +176,69 @@ body{
 }
 .footer .copyright table tr {
 
+<<<<<<< HEAD
+}
+.footer .copyright table tr td {
+    text-align: center;
+    padding: 8px 0 0 0;
+}
+.footer .copyright table tr td .msg {
+    width: 50%;
+    float: left;
+}
+.footer .copyright table tr td .msg:nth-child(2n+1) {
+    text-align: right;
+}
+.footer .copyright table tr td .msg:nth-child(2n) {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.tags {
+    width: 100%;
+    background-color: transparent;
+    overflow: visible;
+    display: inline-block;
+}
+.tags .tag-item {
+    float: left;
+    padding: 3px 2px;
+    border: 1px solid #E8E963;
+    border-radius: 5px;
+    margin-right: 5px;
+    color: #aaaaaa;
+}
+/* content:页面的内容区,内容有三种：博客分类列表，博客列表(搜索结果)，博客内容 */
+.content {
+    width: 94%;
+    /*min-height: 420px;*/
+    min-height: 720px;
+    margin: auto;
+    position: relative;
+    overflow: visible;
+    display: block;
+    margin-top: 20px;
+}
+.content .right {
+    width: 248px;
+    min-height: 300px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-bottom: 20px;
+    border: 1px solid #e8e8e8;
+}
+.content .right .userMsg {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    overflow: visible;
+}
+.content .right .userMsg .head {
+    width: 140px;
+    height: 140px;
+=======
 }
 .footer .copyright table tr td {
     text-align: center;
@@ -269,6 +332,7 @@ body{
 .content .right .post-tags .tag-name {
     width: 100%;
     padding: 5px 5px;
+    border: 1px solid transparent;
 }
 .content .right .post-tags .tag-name:hover {
     border: 1px solid blue;
@@ -359,3 +423,196 @@ body{
 .mr-b-5 {margin-bottom: 5px;}
 /* 最小高度 */
 .min-h-50 {min-height: 50px;}
+
+/* 博客文章的所有样式都在这里面，需要分析所有的基本元素：
+   标题，副标题，摘要，小标题，段落
+   图片，链接*/
+.post {
+    width: 96%;
+    margin: auto;
+    background-color: white;
+    min-height: 200px;
+    position: relative;
+    padding:20px 0;
+}
+.post .headline {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+}
+.post .subhead {
+    width: 100%;
+    text-align: center;
+}
+.post .post-msg {
+    width: 100%;
+    padding: 5px 5%;
+    display: inline-block;
+    border-bottom: 1px solid #e8e8e8;
+}
+.post .post-msg .time {
+    float: right;
+}
+.post .post-msg .tags {
+    float: left;
+    width: auto;
+}
+.post .section {
+    width: 96%;
+>>>>>>> master
+    margin: auto;
+    border-radius: 70px;
+}
+.head-img {
+    background-image: url('imgs/head.jpg');
+    -moz-background-size:100% 140px;
+    background-size:100% 140px;
+    background-repeat: no-repeat;
+    border-radius: 70px;
+}
+.content .right .userMsg .nickname {
+    margin-top: 15px;
+    font-size: 20px;
+    color: black;
+}
+.content .right .userMsg .motto {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #aaaaaa
+}
+/* 博客标签列表，友情链接、 */
+.content .right .post-tags {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    overflow: visible;
+    min-height: 100px;
+    text-align: left;
+}
+.content .right .post-tags .tag-name {
+    width: 100%;
+    padding: 5px 5px;
+}
+.content .right .post-tags .tag-name:hover {
+    border: 1px solid blue;
+}
+.content .right .post-tags .tag-name:active {
+    border: 1px solid red;
+}
+.content .right .post-tags .tag-name.active {
+    border: 1px solid red;
+}
+
+
+/* 博客列表中的博客简要信息模版 */
+.blog {
+    width: 32%;
+    float: left;
+    margin-left: 1%;
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid #e8e8e8;
+}
+.blog:hover {
+    border: 1px solid blue;
+}
+<<<<<<< HEAD
+.blog:active {
+    border: 1px solid red;
+}
+.blog .title {
+    padding: 5px;
+}
+.blog .msg {
+    width: 100%;
+    display: inline-block;
+    padding: 0 2em;
+    font-size: 14px;
+}
+.blog .msg .tag {
+    float: left;
+}
+.blog .msg .time {
+    float: right;
+}
+.blog .abstract {
+    text-indent: 2em;
+    padding: 5px;
+}
+
+.content .left {
+    width:-moz-calc(100% - 250px);
+    width:-webkit-calc(100% - 250px);
+    width: calc(100% - 250px);
+    min-height: 200px;
+    display: block;
+    overflow: visible;
+    padding: 10px 0;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+}
+.content .left .search {
+    width: 100%;
+    min-height: 40px;
+    background-color: powderblue;
+    margin: 10px 0;
+}
+.content .left .tag-blog-list {
+    width: 100%;
+    padding: 10px 5px;
+    display: inline-block;
+    overflow: visible;
+    margin-bottom: 5px;
+}
+.content .left .tag-blog-list .tag-name {
+    width: 100%;
+    padding: 3px 5px;
+    font-size: 20px;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+}
+
+/* 字体大小 */
+.f-abstract {font-size: 14px;}
+.f-20 {font-size: 20px;}
+.f-26 {font-size: 26px;}
+/* 背景颜色 */
+/* padding */
+.pd-tb10-lr5 {padding: 10px 5px;}
+.pd-tb3-lr3 {padding: 3px;}
+.mr-b-5 {margin-bottom: 5px;}
+/* 最小高度 */
+.min-h-50 {min-height: 50px;}
+=======
+.post .section .subtitle {
+    width: 100%;
+    padding: 10px 0;
+}
+.post .section .content-block {
+    text-indent: 2em;
+}
+/* 代码块 */
+.post .section .code-block {
+    border: 1px solid red;
+}
+/* 分页 */
+.post .section .pages {
+
+}
+/* 文字样式：高亮、模糊、大小、倾斜、下划线等*/
+.f-headline {font-size: 30px}
+.f-subhead {font-size: 15px}
+.f-subtitle {font-size: 20px}
+.height-light {color: black;}
+.line-h-1-5 {line-height: 1.5}
+.low-light {color: #aaaaaa}
+
+.post img {
+    max-width: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.post a {}
+>>>>>>> master
