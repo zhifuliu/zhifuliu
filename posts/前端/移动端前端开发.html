@@ -1,0 +1,74 @@
+<div class="post">
+    <div class="headline f-headline">移动端前端开发零碎</div>
+    <div class="subhead f-subhead low-light">在开发移动端前端的一些总结零碎,记录移动端的点点滴滴</div>
+    <div class="post-msg">
+        <div class="time">2016-03-25 08:48:04</div>
+        <div class="tags">
+            <div class="tag-item">h5</div>
+            <div class="tag-item">移动端</div>
+            <div class="tag-item">前端</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="subtitle f-subtitle height-light">1 起因</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                毕业一年,第一份工作做得是一个私募资管系统,对于前端,一直在做的是 pc 端的,并没有做移动端的前端,出来找工作,现在没有不问移动端的,现在这个工作,有机会积累移动端的经验了,就用这篇博客来记录这个过程中得点点滴滴吧.
+            </p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">2 2324 第一个移动端页面</div>
+        <div class="content-block line-h-1-5">
+            <p>
+                上班后的第一个任务是做一个app端的活动页面,对于前端来说很简单:就是一个展示页面,然后加几个按钮,再就是显示一个数据列表.
+            </p>
+            <p class="txt_bolder">
+                公司产品介绍和背景:
+            </p>
+            <p>
+                公司做得是一款工具软件,也要做类似电商之类的,电商的软件,活动多,东西复制,不同的东西不同的样式,前端基本一直都在写页面.公司的产品有两个版本:h5版本和原生版本.
+                所谓h5版本就是移动端客户端其实就是封装了一个网站,原生的东西一点都没有;原生版本有一些原生的东西,有一些页面是拿了远程的 html 来展示(就是直接在内嵌的浏览器中打开对应的网址).
+                所以,在写页面的时候需要考虑向下兼容,通过请求头信息的设置,使得查看请求头就可以知道用户用的是h5版本还是新版本还是微信等浏览器打开.
+                开发流程:写html静态页面 -> 交给后端或者前端自己写jsp -> 数据直接通过 jsp 中得变量在页面上给html中得js.
+            </p>
+            <p>
+                所以,第一点:考虑公司产品的兼容性.
+            </p>
+            <p> class="txt_bolder"接下来,说说前端的事</p>
+            <p class="txt_red">
+                对于移动端,用得多得有几个:媒体查询,流布局,百分比相对定位还有就是在页面顶部设置移动端支持 viewport
+            </p>
+            <div class="code-block">
+                viewport 设置:
+                &lt;meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"&gt;
+                <p>
+                    什么是Viewport
+                </p>
+                <p>手机浏览器是把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。移动版的 Safari 浏览器最新引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放，其他手机浏览器也基本支持。</p>
+
+                <p>Viewport 基础</p>
+                <p>一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：
+
+                    &lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;
+
+                    width：控制 viewport 的大小，可以指定的一个值，如果 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。
+                    height：和 width 相对应，指定高度。
+                    initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。
+                    maximum-scale：允许用户缩放到的最大比例。
+                    minimum-scale：允许用户缩放到的最小比例。
+                    user-scalable：用户是否可以手动缩放
+                </p>
+
+                <p>关于viewport的一些问题</p>
+                <p>viewport并非只是ios上的独有属性，在android、winphone上同样也有viewport。它们要解决的问题是相同的，即无视设备的真实分辨率，直接通过dpi，在物理尺寸和浏览器之间重设分辨率，这个分辨率和设备的分辨率无关。比如，你拿个3.5寸-320 * 480的iphone3 gs、3.5寸-640 * 960的iphone4或者9.7寸-1024*768的ipad2，虽然设备的分辨率不同,物理尺寸也不同，但你可以通过设置viewport让它们在浏览器里有相同的分辨率。比如说，你的网站是800px宽，你可以通过设置viewport的width=800，来让你的网站在这三个不同的设备上都刚好满屏显示你的网站。</p>
+            </div>
+        </div>
+
+        <div class="subtitle f-subtitle height-light"></div>
+        <div class="content-block line-h-1-5">
+            <p></p>
+            <div class="code-block"></div>
+        </div>
+    </div>
+</div>
