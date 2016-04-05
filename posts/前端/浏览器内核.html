@@ -11,14 +11,80 @@
     </div>
 
     <div class="section">
-        <div class="subtitle f-subtitle height-light">1 段落标题</div>
+        <div class="subtitle f-subtitle height-light">1 简介</div>
         <div class="content-block line-h-1-5">
             <p>
-                <a href="#">超链接样式</a>
-                段落内容段落内容段落内容段落内容段落内容段落内容段落内容段落内容段落内容段落内容段落内容段落内容
+                浏览器最重要或者最核心的部分是 "Redering Engine", 可以直接翻译为 "渲染引擎", 不过我们一般习惯称为 "浏览器内核". 浏览器内核负责对网页语法的解释并渲染(显示)网页.
+                所以,通常所谓的浏览器内核也就是浏览器所采用的渲染引擎,渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息.不同的浏览器内核对网页编写的语法的解释也是不同的,因此同意网页
+                在不同内核的浏览器里的渲染(显示)效果也可能是不同的,这也是网页编写者需要在不同内核浏览器中测试网页显示效果的原因.
             </p>
-            <img src="../imgs/head.jpg" alt="图片">
-            <div class="code-block">代码块 var s = 'hello, blog'</div>
+            <p class="txt_red">注意: </p>
+            <p>1 浏览器对于网页的解释的准则也就是 ECMAScript, 但是,并不是所有的浏览器内核都会按照这个规定来编写内核,这就是浏览器大战里面的东西,各个浏览器厂商都向主导这个标准.</p>
+            <p>2 技术总在迭代,标准规范也会过时,所以, ECMAScript 标准也是一直在讨论的,新的草案,有些厂商已经开始支持,有些可能正在筹备,有些可能根本不打算支持,所以,各个具体的功能,还是需要注意浏览器兼容性,也就是内核的兼容性.</p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">2 内核分类</div>
+        <div class="content-block line-h-1-5">
+            <p>1 Trident</p>
+            <p>
+                Trident(IE内核)：该内核程序在1997年的IE4中首次被采用，是微软在Mosaic代码的基础之上修改而来的，并沿用到IE11，也被普遍称作”IE内核”。Trident实际上是一款开放的内核，其接口内核设计的相当成熟，因此才有许多采用IE内核而非IE的浏览器(壳浏览器)涌现。
+            </p>
+            <p>
+                由于IE本身的“垄断性”（虽然名义上IE并非垄断，但实际上，特别是从Windows 95年代一直到XP初期，就市场占有率来说IE的确借助Windows的东风处于“垄断”的地位）而使得Trident内核的长期一家独大，微软很长时间都并没有更新Trident内核，这导致了两个后果——一是Trident内核曾经几乎与W3C标准脱节（2005年），二是Trident内核的大量 Bug等安全性问题没有得到及时解决，然后加上一些致力于开源的开发者和一些学者们公开自己认为IE浏览器不安全的观点，也有很多用户转向了其他浏览器，Firefox和Opera就是这个时候兴起的。非Trident内核浏览器的市场占有率大幅提高也致使许多网页开发人员开始注意网页标准和非IE浏览器的浏览效果问题
+            </p>
+            <p class="txt_red">
+                补充: IE 从版本11开始,初步支持 WebGL 技术.IE8的JS引擎是 Jscript, IE9 开始用 Chakra 作为 JS 引擎.
+            </p>
+            <p>Trident 内核常见浏览器:</p>
+            <p>IE6-10 / 360安全浏览器 / 猎豹极速浏览器 / 360极速浏览器 / 猎豹安全浏览器 / 猎豹极速浏览器 / 遨游浏览器 / 百度浏览器 / 世界之窗浏览器 / 2345浏览器 / 淘宝浏览器 / 搜狗高速浏览器 / 阿云浏览器 / 瑞星浏览器 ......</p>
+            <br>
+
+            <p>2 Gecko</p>
+            <p>代码完全公开 / Firefox 内核 / 与IE有关系</p>
+            <p>Gecko 内核常见浏览器</p>
+            <p>Mozilla Firefox、Mozilla SeaMonkey、waterfox（Firefox的64位开源版）、Iceweasel、Epiphany（早期版本）、Flock（早期版本）、K-Meleon</p>
+            <br>
+
+            <p>3 Presto</p>
+            <p>Opera 前内核,已被废弃. Opera 现已改为 Google Chrome 的Blink内核</p>
+            <br>
+
+            <p>Webkit</p>
+            <p>Safari内核,Chrome内核原型, Webkit 引擎包含 WebCore 排版引擎及 JavaScriptCore 解析引擎,都是从KDE的KHTML及KJS引擎衍生而来</p>
+            <p>Webkit内核常见浏览器</p>
+            <p>Apple Safari / 傲游浏览器3 / Symbian手机浏览器 / Android 默认浏览器 / Google Chrome / 360极速浏览器 / 搜狗高速浏览器</p>
+            <br>
+
+            <p>Blink</p>
+            <p>Blink 是由 Google Chrome 和 Opera Software 开发的浏览器排版引擎,这个渲染引擎是开源 WebKit 中 Webcore 组件的一个分支,并在Chrome 28 及往后版本中使用, Opera 15及以后版本使用, Yandec 浏览器中使用</p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">3 排版引擎</div>
+        <div class="content-block line-h-1-5">
+            <p>WebCore</p>
+            <p>
+                WebCore 是苹果公司开发的排版引擎,它是在另外一个排版引擎"KHTML"的基础上而来.使用WebCore的主要有Safari，此外还有OmniWeb、Shiira、Swift等。Safari现支持Windows，但效果不如iOS上的。
+            </p>
+            <br>
+
+            <p>KHTML</p>
+            <p>KHTML,是 HTML 网页排版引擎之一,由KDE开发.该引擎以C++所写</p>
+            <p>基于KHTML内核的内核: WebKit / WebCore</p>
+        </div>
+
+        <div class="subtitle f-subtitle height-light">4 内核继承栈</div>
+        <div class="content-block line-h-1-5">
+            <p>现在来总结一点点浏览器内核的东西,浏览器内核也就是一个渲染引擎,用来解释网页并渲染(显示),所以,一个浏览器内核包含两个部分:排版引擎 / JS解析引擎</p>
+            <p>主流的浏览器内核有以下几个: </p>
+            <p>Trident: IE内核</p>
+            <p>Gecko: 火狐了内核</p>
+            <p>Presto: 欧鹏前内核,现已转Blink</p>
+            <p>WebKit: 苹果Safari内核.基于KDE的KHTML和KJS得到WebCore和JavaScriptCore</p>
+            <p>Blink: Chrome内核/Opera内核.WebKit的WebCore 的一个分支,只实现了排版引擎,Google Chrome 的js引擎采用了自己写的V8引擎,这个地方只是一个排版引擎</p>
+            <p>KHTML: KDE开发的网页排版引擎</p>
+            <p class="txt_red">
+                补充: 基于 KHTML ,写出的内核: WebKit(排版引擎) / WebCore(js引擎)
+            </p>
         </div>
     </div>
 </div>
