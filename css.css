@@ -310,6 +310,9 @@ body{
 .blog .abstract {
     text-indent: 2em;
     padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .content .left {
